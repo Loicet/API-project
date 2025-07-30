@@ -1,0 +1,10 @@
+{
+  "name": "My Docker Web Dev Environment",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "settings": {},
+  "extensions": [],
+  "forwardPorts": [8080],
+  "postCreateCommand": "echo 'Codespace ready!'"
+}
