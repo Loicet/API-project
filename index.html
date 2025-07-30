@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VenueFinder - Find Your Perfect Event Space</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">🏢 VenueFinder</div>
+                <div class="auth-buttons">
+                    <button class="btn btn-secondary" onclick="openModal('loginModal')">Login</button>
+                    <button class="btn btn-primary" onclick="openModal('registerModal')">Sign Up</button>
+                    <button class="btn btn-secondary" onclick="toggleUserType()">For Venue Owners</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Find Your Perfect Event Venue</h1>
+            <p>Discover and book amazing venues in Rwanda. From elegant halls to beautiful gardens, find the perfect space for your special event.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="search-section">
+            <div class="search-tabs">
+                <button class="search-tab active" onclick="switchTab('location')">📍 By Location</button>
+                <button class="search-tab" onclick="switchTab('name')">🏢 By Venue Name</button>
+                <button class="search-tab" onclick="switchTab('type')">🌿 By Type</button>
+                <button class="search-tab" onclick="switchTab('date')">📅 By Date</button>
+            </div>
+
+            <form class="search-form" id="searchForm">
+                <div class="form-group">
+                    <label for="searchInput" id="searchLabel">Location</label>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Enter city or area ">
+                </div>
+                <div class="form-group">
+                    <label for="capacity">Guest Capacity</label>
+                    <select id="capacity" class="form-control">
+                        <option value="">Any size</option>
+                        <option value="1-50">1 - 50 people</option>
+                        <option value="51-100">51 - 100 people</option>
+                        <option value="101-300">101 - 300 people</option>
+                        <option value="301+">300+ people</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-search">🔍 Search</button>
+            </form>
+
+            <div class="filters-section">
+                <button class="filters-toggle" onclick="toggleFilters()">⚙️ Advanced Filters</button>
+                <div class="filters-grid" id="filtersGrid">
+                    <div class="form-group">
+                        <label for="budget">Budget Range (RWF)</label>
+                        <select id="budget" class="form-control">
+                            <option value="">Any budget</option>
+                            <option value="0-100000">Under 100,000</option>
+                            <option value="100000-300000">100,000 - 300,000</option>
+                            <option value="300000-500000">300,000 - 500,000</option>
+                            <option value="500000+">500,000+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amenities">Amenities</label>
+                        <select id="amenities" class="form-control">
+                            <option value="">All amenities</option>
+                            <option value="parking">Parking</option>
+                            <option value="ac">Air Conditioning</option>
+                            <option value="catering">Catering</option>
+                            <option value="sound">Sound System</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Minimum Rating</label>
+                        <select id="rating" class="form-control">
+                            <option value="">Any rating</option>
+                            <option value="4">4+ Stars</option>
+                            <option value="3">3+ Stars</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="venue-grid" id="venueGrid">
+            <!-- Venues will be populated here -->
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login to VenueFinder</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="userType">Login as:</label>
+                    <select id="userType" class="form-control">
+                        <option value="user">Event Organizer</option>
+                        <option value="developer">Venue Owner</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Join VenueFinder</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerType">I am a:</label>
+                    <select id="registerType" class="form-control">
+                        <option value="user">Event Organizer</option>
+                        <option value="developer">Venue Owner</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Create Account</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
